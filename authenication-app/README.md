@@ -13,3 +13,7 @@ axios nodemailer bcrypt jsonwebtoken react-hot-toast mongoose
 MONGO_URI=
 SECRET_TOKEN=
 DOMAIN=
+
+
+# Models 
+- Creation is same but exporting has special syntax , if already created use it or create (const User = mongoose.models.users || ... ; export default User;)
