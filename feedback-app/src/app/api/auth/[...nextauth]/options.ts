@@ -72,7 +72,7 @@ export const authOptions:NextAuthOptions = {
   },
   // full signIn control to next, UI overwrite
   pages:{
-    signIn:'/sign-in'
+    signIn:'/login'
   },
   // one with token can login
   session:{

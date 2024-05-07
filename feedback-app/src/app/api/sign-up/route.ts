@@ -15,7 +15,7 @@ export async function POST(request:Request){
         });
         if(existingUserVerifiedByUsername){
             return Response.json({
-                success:true,
+                success:true, 
                 message:"Username is already taken!"
             },{
                 status:400
@@ -41,6 +41,7 @@ export async function POST(request:Request){
                 existingUserByEmail.verifyCodeExpiry = new Date(Date.now() +3640000)
                 await existingUserByEmail.save();
             }
+
         }else{
             const hashedPassword = await bcrypt.hash(password,10);
             const expiryDate = new Date();
@@ -66,6 +67,7 @@ export async function POST(request:Request){
             username,
             verifyCode
         );
+        // console.log(emailResponse)
         if(!emailResponse.success){
             return Response.json({
                 success:false,
