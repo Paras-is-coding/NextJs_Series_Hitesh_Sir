@@ -5,8 +5,8 @@ import UserModel from "@/model/User";
 export async function POST(request:Request){
     await dbConnect();
     try {
-       const {username,code} = await request.json()
-
+       const {username,verifyCode} = await request.json()
+     
        // URI modify spaces, to get original we've to decode
         const decodedUsername = decodeURIComponent(username);
 
@@ -20,12 +20,13 @@ export async function POST(request:Request){
             })
         }
 
-        const isCodeValid = user.verifyCode === code;
+        const isCodeValid = user.verifyCode === verifyCode;
         const isCodeNotExpired = new Date(user.verifyCodeExpiry) > new Date();
+        console.log(isCodeValid)
+        console.log(isCodeNotExpired)
 
         if(isCodeValid && isCodeNotExpired){
             user.isVerified = true;
-            user.verifyCode = "";
             await user.save();
             return Response.json({
                 success:true,

@@ -22,9 +22,10 @@ async function dbConnect(): Promise<void> {
       autoCreate: true,
       autoIndex: true,
     });
+
     connection.isConnected = db.connections[0].readyState;
-    console.log(db)
-    console.log(db.connections)
+    // console.log(db)
+    // console.log(db.connections)
     console.log("Database connected successfully!")
     
 
